@@ -1,0 +1,4 @@
+;; Include generated API definition files
+(include libmidgard2_enum.defs)
+(include libmidgard2_method.defs)
+(include libmidgard2_extra.defs)

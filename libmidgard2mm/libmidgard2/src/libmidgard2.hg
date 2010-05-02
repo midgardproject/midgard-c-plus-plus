@@ -1,0 +1,57 @@
+/* Copyright (c) 2010  Joe Hacker <joe@example.com>
+ *
+ * This file is part of libmidgard2mm.
+ *
+ * libmidgard2mm is free software: you can redistribute it and/or modify it
+ * under the terms of the GNU Lesser General Public License as published
+ * by the Free Software Foundation, either version 2.1 of the License,
+ * or (at your option) any later version.
+ *
+ * libmidgard2mm is distributed in the hope that it will be useful, but
+ * WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See the GNU Lesser General Public License for more details.
+ *
+ * You should have received a copy of the GNU Lesser General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+_DEFS(libmidgard2mm,libmidgard2)
+_CONFIGINCLUDE(libmidgard2mmconfig.h)
+_PINCLUDE(glibmm/private/object_p.h)
+
+#include <glibmm.h>
+
+namespace Midgard
+{
+
+class Config : public Glib::Object
+{
+  _CLASS_GOBJECT(Config, MidgardConfig, MIDGARD_TYPE_CONFIG, Glib::Object, GObject)
+
+public:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_METHOD(void read_file(const Glib::ustring& name, bool user_file), midgard_config_read_file, errthrow)
+public:
+  _WRAP_METHOD(void save_file(const Glib::ustring& name, bool user_file), midgard_config_save_file, errthrow)
+public
+  _WRAP_METHOD(void create_blobdir(), midgard_config_create_blobdir)
+public
+  _WRAP_METHOD(void read_file_at_path(const Glib::ustring& name), midgard_config_read_file_at_path, errthrow)
+};
+
+class Connection : public Glib::Object
+{
+  _CLASS_GOBJECT(Connection, MidgardConnection, MIDGARD_TYPE_CONNECTION, Glib::Object, GObject)
+
+public:
+  _CTOR_DEFAULT
+
+public:
+  _WRAP_METHOD(void open_config(MidgardConfig *config), midgard_connection_open_config)
+
+};
+
+} // namespace Midgard

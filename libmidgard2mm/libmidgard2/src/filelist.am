@@ -1,0 +1,11 @@
+## This file is part of libmidgard2mm.
+
+files_defs =			\
+	libmidgard2.defs		\
+	libmidgard2_enum.defs	\
+	libmidgard2_extra.defs	\
+	libmidgard2_method.defs	\
+	libmidgard2_docs.xml
+
+files_hg  = libmidgard2.hg
+files_ccg = $(files_hg:.hg=.ccg)

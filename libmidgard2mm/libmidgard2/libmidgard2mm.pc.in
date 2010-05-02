@@ -1,0 +1,19 @@
+prefix=@prefix@
+exec_prefix=@exec_prefix@
+libdir=@libdir@
+datarootdir=@datarootdir@
+datadir=@datadir@
+includedir=@includedir@
+
+docdir=${datarootdir}/doc/@LIBMIDGARD2MM_MODULE_NAME@
+doxytagfile=${docdir}/reference/@LIBMIDGARD2MM_MODULE_NAME@.tag
+htmlrefdir=${docdir}/reference/html
+htmlrefpub=http://library.gnome.org/devel/@PACKAGE_TARNAME@/unstable/
+
+Name: libmidgard2mm
+Description: C++ binding for libmidgard2
+Version: @LIBMIDGARD2MM_VERSION@
+URL: http://www.gtkmm.org/
+Requires: @LIBMIDGARD2MM_MODULES@
+Libs: -L${libdir} -llibmidgard2mm-@LIBMIDGARD2MM_API_VERSION@
+Cflags: -I${includedir}/@LIBMIDGARD2MM_MODULE_NAME@ -I${libdir}/@LIBMIDGARD2MM_MODULE_NAME@/include

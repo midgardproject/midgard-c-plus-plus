@@ -1,0 +1,10 @@
+doxytagfile=${pc_top_builddir}/doc/reference/@LIBMIDGARD2MM_MODULE_NAME@.tag
+htmlrefpub=http://library.gnome.org/devel/@PACKAGE_TARNAME@/unstable/
+
+Name: libmidgard2mm
+Description: C++ binding for libmidgard2, not installed
+Version: @LIBMIDGARD2MM_VERSION@
+URL: http://www.gtkmm.org/
+Requires: @LIBMIDGARD2MM_MODULES@
+Libs: ${pc_top_builddir}/${pcfiledir}/libmidgard2mm/liblibmidgard2mm-@LIBMIDGARD2MM_API_VERSION@.la
+Cflags: -I${pc_top_builddir}/${pcfiledir} -I${pc_top_builddir}/${pcfiledir}/@srcdir@

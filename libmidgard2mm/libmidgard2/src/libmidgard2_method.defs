@@ -1,0 +1,3181 @@
+;; -*- scheme -*-
+; object definitions ...
+(define-object DBObject
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardDBObject")
+  (gtype-id "MIDGARD_TYPE_DB_OBJECT")
+)
+
+(define-object Dbus
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardDbus")
+  (gtype-id "MIDGARD_TYPE_DBUS")
+)
+
+(define-object KeyConfig
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardKeyConfig")
+  (gtype-id "MIDGARD_TYPE_KEY_CONFIG")
+)
+
+(define-object KeyConfigContext
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardKeyConfigContext")
+  (gtype-id "MIDGARD_TYPE_KEY_CONFIG_CONTEXT")
+)
+
+(define-object KeyConfigFile
+  (in-module "Midgard")
+  (parent "MidgardKeyConfig")
+  (c-name "MidgardKeyConfigFile")
+  (gtype-id "MIDGARD_TYPE_KEY_CONFIG_FILE")
+)
+
+(define-object KeyConfigFileContext
+  (in-module "Midgard")
+  (parent "MidgardKeyConfigContext")
+  (c-name "MidgardKeyConfigFileContext")
+  (gtype-id "MIDGARD_TYPE_KEY_CONFIG_FILE_CONTEXT")
+)
+
+(define-object Metadata
+  (in-module "Midgard")
+  (parent "MidgardDBObject")
+  (c-name "MidgardMetadata")
+  (gtype-id "MIDGARD_TYPE_METADATA")
+)
+
+(define-object Object
+  (in-module "Midgard")
+  (parent "MidgardDBObject")
+  (c-name "MidgardObject")
+  (gtype-id "MIDGARD_TYPE_OBJECT")
+)
+
+(define-object QueryConstraint
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardQueryConstraint")
+  (gtype-id "MIDGARD_TYPE_QUERY_CONSTRAINT")
+)
+
+(define-object QueryConstraintGroup
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardQueryConstraintGroup")
+  (gtype-id "MIDGARD_TYPE_QUERY_CONSTRAINT_GROUP")
+)
+
+(define-object QueryExecutor
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardQueryExecutor")
+  (gtype-id "MIDGARD_TYPE_QUERY_EXECUTOR")
+)
+
+(define-object QueryProperty
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardQueryProperty")
+  (gtype-id "MIDGARD_TYPE_QUERY_PROPERTY")
+)
+
+(define-object QuerySelect
+  (in-module "Midgard")
+  (parent "MidgardQueryExecutor")
+  (c-name "MidgardQuerySelect")
+  (gtype-id "MIDGARD_TYPE_QUERY_SELECT")
+)
+
+(define-object QueryStorage
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardQueryStorage")
+  (gtype-id "MIDGARD_TYPE_QUERY_STORAGE")
+)
+
+(define-object QueryValue
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardQueryValue")
+  (gtype-id "MIDGARD_TYPE_QUERY_VALUE")
+)
+
+(define-object ReflectorObject
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardReflectorObject")
+  (gtype-id "MIDGARD_TYPE_REFLECTOR_OBJECT")
+)
+
+(define-object ReflectorProperty
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardReflectorProperty")
+  (gtype-id "MIDGARD_TYPE_REFLECTOR_PROPERTY")
+)
+
+(define-object Schema
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardSchema")
+  (gtype-id "MIDGARD_TYPE_SCHEMA")
+)
+
+(define-object SchemaObjectFactory
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardSchemaObjectFactory")
+  (gtype-id "MIDGARD_TYPE_SCHEMA_OBJECT_FACTORY")
+)
+
+(define-object SchemaObjectTree
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardSchemaObjectTree")
+  (gtype-id "MIDGARD_TYPE_SCHEMA_OBJECT_TREE")
+)
+
+(define-object Transaction
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardTransaction")
+  (gtype-id "MIDGARD_TYPE_TRANSACTION")
+)
+
+(define-object User
+  (in-module "Midgard")
+  (parent "MidgardDBObject")
+  (c-name "MidgardUser")
+  (gtype-id "MIDGARD_TYPE_USER")
+)
+
+(define-object View
+  (in-module "Midgard")
+  (parent "GObject")
+  (c-name "MidgardView")
+  (gtype-id "MIDGARD_TYPE_VIEW")
+)
+
+;; Enumerations and flags ...
+
+(define-enum TypeAuth
+  (in-module "Midgard")
+  (c-name "MidgardTypeAuth")
+  (gtype-id "MIDGARD_TYPE_TYPE_AUTH")
+  (values
+    '("normal" "MIDGARD_AUTHTYPE_NORMAL")
+    '("pam" "MIDGARD_AUTHTYPE_PAM")
+    '("trust" "MIDGARD_AUTHTYPE_TRUST")
+  )
+)
+
+(define-enum ErrorGeneric
+  (in-module "Mgd")
+  (c-name "MgdErrorGeneric")
+  (gtype-id "MGD_TYPE_ERROR_GENERIC")
+  (values
+    '("ok" "MGD_ERR_OK")
+    '("error" "MGD_ERR_ERROR")
+    '("access-denied" "MGD_ERR_ACCESS_DENIED")
+    '("no-metadata" "MGD_ERR_NO_METADATA")
+    '("not-object" "MGD_ERR_NOT_OBJECT")
+    '("not-exists" "MGD_ERR_NOT_EXISTS")
+    '("invalid-name" "MGD_ERR_INVALID_NAME")
+    '("duplicate" "MGD_ERR_DUPLICATE")
+    '("has-dependants" "MGD_ERR_HAS_DEPENDANTS")
+    '("range" "MGD_ERR_RANGE")
+    '("not-connected" "MGD_ERR_NOT_CONNECTED")
+    '("sg-notfound" "MGD_ERR_SG_NOTFOUND")
+    '("invalid-object" "MGD_ERR_INVALID_OBJECT")
+    '("quota" "MGD_ERR_QUOTA")
+    '("internal" "MGD_ERR_INTERNAL")
+    '("object-name-exists" "MGD_ERR_OBJECT_NAME_EXISTS")
+    '("object-no-storage" "MGD_ERR_OBJECT_NO_STORAGE")
+    '("object-no-parent=" "MGD_ERR_OBJECT_NO_PARENT=")
+    '("invalid-property-value" "MGD_ERR_INVALID_PROPERTY_VALUE")
+    '("invalid-property" "MGD_ERR_INVALID_PROPERTY")
+    '("user-data" "MGD_ERR_USER_DATA")
+    '("object-deleted" "MGD_ERR_OBJECT_DELETED")
+    '("object-purged" "MGD_ERR_OBJECT_PURGED")
+    '("object-exported" "MGD_ERR_OBJECT_EXPORTED")
+    '("object-imported" "MGD_ERR_OBJECT_IMPORTED")
+    '("missed-dependence" "MGD_ERR_MISSED_DEPENDENCE")
+    '("tree-is-circular" "MGD_ERR_TREE_IS_CIRCULAR")
+    '("object-is-locked" "MGD_ERR_OBJECT_IS_LOCKED")
+  )
+)
+
+(define-enum ConfigContextError
+  (in-module "Key")
+  (c-name "KeyConfigContextError")
+  (gtype-id "KEY_TYPE_CONFIG_CONTEXT_ERROR")
+  (values
+    '("absolute" "KEY_CONFIG_CONTEXT_ERROR_PATH_IS_NOT_ABSOLUTE")
+  )
+)
+
+
+;; From guid.h
+
+(define-function midgard_is_guid
+  (c-name "midgard_is_guid")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "guid")
+  )
+)
+
+(define-function midgard_guid_new
+  (c-name "midgard_guid_new")
+  (is-constructor-of "MidgardGuid")
+  (return-type "gchar*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+  )
+)
+
+(define-function midgard_guid_external
+  (c-name "midgard_guid_external")
+  (return-type "gchar*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "external")
+  )
+)
+
+(define-function mgd_create_guid
+  (c-name "mgd_create_guid")
+  (return-type "gchar*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "table")
+    '("guint" "id")
+  )
+)
+
+
+
+;; From midgard_blob.h
+
+(define-function midgard_blob_get_type
+  (c-name "midgard_blob_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_blob_new
+  (c-name "midgard_blob_new")
+  (is-constructor-of "MidgardBlob")
+  (return-type "MidgardBlob*")
+  (parameters
+    '("MidgardObject*" "attachment")
+    '("const-gchar*" "encoding")
+  )
+)
+
+(define-method read_content
+  (of-object "MidgardBlob")
+  (c-name "midgard_blob_read_content")
+  (return-type "gchar*")
+  (parameters
+    '("gsize*" "bytes_read")
+  )
+)
+
+(define-method write_content
+  (of-object "MidgardBlob")
+  (c-name "midgard_blob_write_content")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "content")
+  )
+)
+
+(define-method get_handler
+  (of-object "MidgardBlob")
+  (c-name "midgard_blob_get_handler")
+  (return-type "GIOChannel*")
+  (parameters
+    '("const-gchar*" "mode")
+  )
+)
+
+(define-method get_path
+  (of-object "MidgardBlob")
+  (c-name "midgard_blob_get_path")
+  (return-type "const-gchar*")
+)
+
+(define-method exists
+  (of-object "MidgardBlob")
+  (c-name "midgard_blob_exists")
+  (return-type "gboolean")
+)
+
+(define-method remove_file
+  (of-object "MidgardBlob")
+  (c-name "midgard_blob_remove_file")
+  (return-type "gboolean")
+)
+
+
+
+;; From midgard_collector.h
+
+(define-function midgard_collector_get_type
+  (c-name "midgard_collector_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_collector_new
+  (c-name "midgard_collector_new")
+  (is-constructor-of "MidgardCollector")
+  (return-type "MidgardCollector*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "typename")
+    '("const-gchar*" "domain")
+    '("GValue*" "value")
+  )
+)
+
+(define-method set_key_property
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_set_key_property")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "key")
+    '("GValue*" "value")
+  )
+)
+
+(define-method add_value_property
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_add_value_property")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "value")
+  )
+)
+
+(define-method set
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_set")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "key")
+    '("const-gchar*" "subkey")
+    '("GValue*" "value")
+  )
+)
+
+(define-method get
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_get")
+  (return-type "GData*")
+  (parameters
+    '("const-gchar*" "key")
+  )
+)
+
+(define-method get_subkey
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_get_subkey")
+  (return-type "GValue*")
+  (parameters
+    '("const-gchar*" "key")
+    '("const-gchar*" "subkey")
+  )
+)
+
+(define-method list_keys
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_list_keys")
+  (return-type "gchar**")
+)
+
+(define-method merge
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_merge")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardCollector*" "mc")
+    '("gboolean" "overwrite")
+  )
+)
+
+(define-method remove_key
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_remove_key")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "key")
+  )
+)
+
+(define-method add_constraint
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_add_constraint")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "name")
+    '("const-gchar*" "op")
+    '("const-GValue*" "value")
+  )
+)
+
+(define-method add_constraint_with_property
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_add_constraint_with_property")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "property_a")
+    '("const-gchar*" "op")
+    '("const-gchar*" "property_b")
+  )
+)
+
+(define-method begin_group
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_begin_group")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "type")
+  )
+)
+
+(define-method end_group
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_end_group")
+  (return-type "gboolean")
+)
+
+(define-method add_order
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_add_order")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "name")
+    '("const-gchar*" "dir")
+  )
+)
+
+(define-method set_offset
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_set_offset")
+  (return-type "none")
+  (parameters
+    '("guint" "offset")
+  )
+)
+
+(define-method set_limit
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_set_limit")
+  (return-type "none")
+  (parameters
+    '("guint" "limit")
+  )
+)
+
+(define-method count
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_count")
+  (return-type "none")
+)
+
+(define-method execute
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_execute")
+  (return-type "gboolean")
+)
+
+(define-method include_deleted
+  (of-object "MidgardCollector")
+  (c-name "midgard_collector_include_deleted")
+  (return-type "gboolean")
+)
+
+
+
+;; From midgard_config_auto.h
+
+
+
+;; From midgard_config.h
+
+(define-function midgard_config_get_type
+  (c-name "midgard_config_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_config_new
+  (c-name "midgard_config_new")
+  (is-constructor-of "MidgardConfig")
+  (return-type "MidgardConfig*")
+)
+
+(define-method read_file
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_read_file")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "filename")
+    '("gboolean" "user")
+    '("GError**" "error")
+  )
+)
+
+(define-method read_file_at_path
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_read_file_at_path")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "filepath")
+    '("GError**" "error")
+  )
+)
+
+(define-method read_data
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_read_data")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "data")
+    '("GError**" "error")
+  )
+)
+
+(define-function midgard_config_list_files
+  (c-name "midgard_config_list_files")
+  (return-type "gchar**")
+  (parameters
+    '("gboolean" "user")
+  )
+)
+
+(define-method save_file
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_save_file")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "name")
+    '("gboolean" "user")
+    '("GError**" "error")
+  )
+)
+
+(define-method create_blobdir
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_create_blobdir")
+  (return-type "gboolean")
+)
+
+(define-method get_database_name
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_database_name")
+  (return-type "const-gchar*")
+)
+
+(define-method get_database_type
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_database_type")
+  (return-type "const-gchar*")
+)
+
+(define-method get_database_username
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_database_username")
+  (return-type "const-gchar*")
+)
+
+(define-method get_database_password
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_database_password")
+  (return-type "const-gchar*")
+)
+
+(define-method get_database_host
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_database_host")
+  (return-type "const-gchar*")
+)
+
+(define-method get_database_port
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_database_port")
+  (return-type "guint")
+)
+
+(define-method get_blobdir
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_blobdir")
+  (return-type "const-gchar*")
+)
+
+(define-method get_logfile
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_logfile")
+  (return-type "const-gchar*")
+)
+
+(define-method get_loglevel
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_loglevel")
+  (return-type "const-gchar*")
+)
+
+(define-method get_table_create
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_table_create")
+  (return-type "gboolean")
+)
+
+(define-method get_table_update
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_table_update")
+  (return-type "gboolean")
+)
+
+(define-method get_testunit
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_testunit")
+  (return-type "gboolean")
+)
+
+(define-method get_midgard_username
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_midgard_username")
+  (return-type "const-gchar*")
+)
+
+(define-method get_midgard_password
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_midgard_password")
+  (return-type "const-gchar*")
+)
+
+(define-method get_authtype
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_authtype")
+  (return-type "const-gchar*")
+)
+
+(define-method get_pamfile
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_pamfile")
+  (return-type "const-gchar*")
+)
+
+(define-method get_schema_dir
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_get_schema_dir")
+  (return-type "const-gchar*")
+)
+
+(define-method set_database_name
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_database_name")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "name")
+  )
+)
+
+(define-method set_database_type
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_database_type")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "type")
+  )
+)
+
+(define-method set_database_username
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_database_username")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "username")
+  )
+)
+
+(define-method set_database_password
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_database_password")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "password")
+  )
+)
+
+(define-method set_database_host
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_database_host")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "host")
+  )
+)
+
+(define-method set_database_port
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_database_port")
+  (return-type "none")
+  (parameters
+    '("guint" "port")
+  )
+)
+
+(define-method set_blobdir
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_blobdir")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "blobdir")
+  )
+)
+
+(define-method set_logfile
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_logfile")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "logfile")
+  )
+)
+
+(define-method set_loglevel
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_loglevel")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "loglevel")
+  )
+)
+
+(define-method set_table_create
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_table_create")
+  (return-type "none")
+  (parameters
+    '("gboolean" "toggle")
+  )
+)
+
+(define-method set_table_update
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_table_update")
+  (return-type "none")
+  (parameters
+    '("gboolean" "toggle")
+  )
+)
+
+(define-method set_testunit
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_testunit")
+  (return-type "none")
+  (parameters
+    '("gboolean" "toggle")
+  )
+)
+
+(define-method set_midgard_username
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_midgard_username")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "username")
+  )
+)
+
+(define-method set_midgard_password
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_midgard_password")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "password")
+  )
+)
+
+(define-method set_authtype
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_authtype")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "authtype")
+  )
+)
+
+(define-method set_pamfile
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_pamfile")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "pamfile")
+  )
+)
+
+(define-method set_schema_dir
+  (of-object "MidgardConfig")
+  (c-name "midgard_config_set_schema_dir")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "dir")
+  )
+)
+
+
+
+;; From midgard_connection.h
+
+(define-function midgard_connection_get_type
+  (c-name "midgard_connection_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_connection_new
+  (c-name "midgard_connection_new")
+  (is-constructor-of "MidgardConnection")
+  (return-type "MidgardConnection*")
+)
+
+(define-method open
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_open")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "name")
+    '("GError**" "error")
+  )
+)
+
+(define-function midgard_connection_open_all
+  (c-name "midgard_connection_open_all")
+  (return-type "GHashTable*")
+  (parameters
+    '("gboolean" "userdir")
+  )
+)
+
+(define-method open_config
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_open_config")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardConfig*" "config")
+  )
+)
+
+(define-method open_from_file
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_open_from_file")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "filepath")
+    '("GError**" "error")
+  )
+)
+
+(define-method is_connected
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_is_connected")
+  (return-type "gboolean")
+)
+
+(define-method set_loglevel
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_set_loglevel")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "level")
+    '("GLogFunc" "log_func")
+  )
+)
+
+(define-method get_loglevel
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_get_loglevel")
+  (return-type "guint")
+)
+
+(define-method set_loghandler
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_set_loghandler")
+  (return-type "none")
+  (parameters
+    '("guint" "loghandler")
+  )
+)
+
+(define-method get_loghandler
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_get_loghandler")
+  (return-type "guint")
+)
+
+(define-method get_error
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_get_error")
+  (return-type "gint")
+)
+
+(define-method set_error
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_set_error")
+  (return-type "none")
+  (parameters
+    '("gint" "errcode")
+  )
+)
+
+(define-method get_error_string
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_get_error_string")
+  (return-type "const-gchar*")
+)
+
+(define-method get_user
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_get_user")
+  (return-type "MidgardUser*")
+)
+
+(define-method copy
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_copy")
+  (return-type "MidgardConnection*")
+)
+
+(define-method reopen
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_reopen")
+  (return-type "gboolean")
+)
+
+(define-method list_auth_types
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_list_auth_types")
+  (return-type "gchar**")
+  (parameters
+    '("guint*" "n_types")
+  )
+)
+
+(define-method enable_quota
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_enable_quota")
+  (return-type "none")
+  (parameters
+    '("gboolean" "toggle")
+  )
+)
+
+(define-method enable_replication
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_enable_replication")
+  (return-type "none")
+  (parameters
+    '("gboolean" "toggle")
+  )
+)
+
+(define-method enable_dbus
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_enable_dbus")
+  (return-type "none")
+  (parameters
+    '("gboolean" "toggle")
+  )
+)
+
+(define-method is_enabled_quota
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_is_enabled_quota")
+  (return-type "gboolean")
+)
+
+(define-method is_enabled_replication
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_is_enabled_replication")
+  (return-type "gboolean")
+)
+
+(define-method is_enabled_dbus
+  (of-object "MidgardConnection")
+  (c-name "midgard_connection_is_enabled_dbus")
+  (return-type "gboolean")
+)
+
+
+
+;; From midgard_datatypes.h
+
+(define-function midgard_hash_strings_new
+  (c-name "midgard_hash_strings_new")
+  (is-constructor-of "MidgardHashStrings")
+  (return-type "GHashTable*")
+)
+
+
+
+;; From midgard_dbobject.h
+
+(define-function midgard_dbobject_get_type
+  (c-name "midgard_dbobject_get_type")
+  (return-type "GType")
+)
+
+
+
+;; From midgard_dbus.h
+
+(define-function midgard_dbus_get_type
+  (c-name "midgard_dbus_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_dbus_new
+  (c-name "midgard_dbus_new")
+  (is-constructor-of "MidgardDbus")
+  (return-type "MidgardDbus*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "path")
+    '("gboolean" "use_session")
+  )
+)
+
+(define-function midgard_dbus_send
+  (c-name "midgard_dbus_send")
+  (return-type "none")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "path")
+    '("const-gchar*" "message")
+    '("gboolean" "use_session")
+  )
+)
+
+(define-method get_message
+  (of-object "MidgardDbus")
+  (c-name "midgard_dbus_get_message")
+  (return-type "const-gchar*")
+)
+
+(define-function midgard_dbus_get_name
+  (c-name "midgard_dbus_get_name")
+  (return-type "const-gchar*")
+)
+
+
+
+;; From midgard_defs.h
+
+
+
+;; From midgard_error.h
+
+(define-function midgard_error_generic
+  (c-name "midgard_error_generic")
+  (return-type "GQuark")
+)
+
+(define-function midgard_error_string
+  (c-name "midgard_error_string")
+  (return-type "const-gchar*")
+  (parameters
+    '("GQuark" "domain")
+    '("gint" "errcode")
+  )
+)
+
+(define-function midgard_set_error
+  (c-name "midgard_set_error")
+  (return-type "none")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("GQuark" "domain")
+    '("gint" "errcode")
+    '("const-gchar*" "msg")
+  )
+  (varargs #t)
+)
+
+(define-function midgard_error_default_log
+  (c-name "midgard_error_default_log")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "domain")
+    '("GLogLevelFlags" "level")
+    '("const-gchar*" "msg")
+    '("gpointer" "ptr")
+  )
+)
+
+(define-function midgard_error_parse_loglevel
+  (c-name "midgard_error_parse_loglevel")
+  (return-type "gint")
+  (parameters
+    '("const-gchar*" "levelstring")
+  )
+)
+
+(define-function mgd_info
+  (c-name "mgd_info")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "format")
+  )
+  (varargs #t)
+)
+
+
+
+;; From midgard.h
+
+
+
+;; From midgard_key_config_common.h
+
+(define-function midgard_key_config_context_get_type
+  (c-name "midgard_key_config_context_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_key_config_context_construct
+  (c-name "midgard_key_config_context_construct")
+  (return-type "MidgardKeyConfigContext*")
+  (parameters
+    '("GType" "object_type")
+    '("const-char*" "context_path")
+  )
+)
+
+(define-method list_key_config
+  (of-object "MidgardKeyConfigContext")
+  (c-name "midgard_key_config_context_list_key_config")
+  (return-type "char**")
+  (parameters
+    '("int*" "result_length1")
+  )
+)
+
+(define-method get_context_path
+  (of-object "MidgardKeyConfigContext")
+  (c-name "midgard_key_config_context_get_context_path")
+  (return-type "const-char*")
+)
+
+(define-function midgard_key_config_file_context_get_type
+  (c-name "midgard_key_config_file_context_get_type")
+  (return-type "GType")
+)
+
+(define-function key_config_context_error_quark
+  (c-name "key_config_context_error_quark")
+  (return-type "GQuark")
+)
+
+(define-function midgard_key_config_file_context_new
+  (c-name "midgard_key_config_file_context_new")
+  (is-constructor-of "MidgardKeyConfigFileContext")
+  (return-type "MidgardKeyConfigFileContext*")
+  (parameters
+    '("const-char*" "context_path")
+    '("GError**" "error")
+  )
+)
+
+(define-function midgard_key_config_file_context_construct
+  (c-name "midgard_key_config_file_context_construct")
+  (return-type "MidgardKeyConfigFileContext*")
+  (parameters
+    '("GType" "object_type")
+    '("const-char*" "context_path")
+    '("GError**" "error")
+  )
+)
+
+(define-function midgard_key_config_get_type
+  (c-name "midgard_key_config_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_key_config_file_get_type
+  (c-name "midgard_key_config_file_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_key_config_file_new
+  (c-name "midgard_key_config_file_new")
+  (is-constructor-of "MidgardKeyConfigFile")
+  (return-type "MidgardKeyConfigFile*")
+  (parameters
+    '("MidgardKeyConfigFileContext*" "keyctx")
+    '("const-char*" "path")
+    '("GError**" "error")
+  )
+)
+
+(define-function midgard_key_config_file_construct
+  (c-name "midgard_key_config_file_construct")
+  (return-type "MidgardKeyConfigFile*")
+  (parameters
+    '("GType" "object_type")
+    '("MidgardKeyConfigFileContext*" "keyctx")
+    '("const-char*" "path")
+    '("GError**" "error")
+  )
+)
+
+(define-function midgard_key_config_construct
+  (c-name "midgard_key_config_construct")
+  (return-type "MidgardKeyConfig*")
+  (parameters
+    '("GType" "object_type")
+    '("MidgardKeyConfigContext*" "keyctx")
+    '("const-char*" "path")
+  )
+)
+
+(define-method set_value
+  (of-object "MidgardKeyConfig")
+  (c-name "midgard_key_config_set_value")
+  (return-type "none")
+  (parameters
+    '("const-char*" "group")
+    '("const-char*" "key")
+    '("const-char*" "value")
+  )
+)
+
+(define-method get_value
+  (of-object "MidgardKeyConfig")
+  (c-name "midgard_key_config_get_value")
+  (return-type "char*")
+  (parameters
+    '("const-char*" "group")
+    '("const-char*" "key")
+  )
+)
+
+(define-method set_comment
+  (of-object "MidgardKeyConfig")
+  (c-name "midgard_key_config_set_comment")
+  (return-type "none")
+  (parameters
+    '("const-char*" "group")
+    '("const-char*" "key")
+    '("const-char*" "comment")
+  )
+)
+
+(define-method get_comment
+  (of-object "MidgardKeyConfig")
+  (c-name "midgard_key_config_get_comment")
+  (return-type "char*")
+  (parameters
+    '("const-char*" "group")
+    '("const-char*" "key")
+  )
+)
+
+(define-method list_groups
+  (of-object "MidgardKeyConfig")
+  (c-name "midgard_key_config_list_groups")
+  (return-type "char**")
+  (parameters
+    '("int*" "result_length1")
+  )
+)
+
+(define-method group_exists
+  (of-object "MidgardKeyConfig")
+  (c-name "midgard_key_config_group_exists")
+  (return-type "gboolean")
+  (parameters
+    '("const-char*" "name")
+  )
+)
+
+(define-method delete_group
+  (of-object "MidgardKeyConfig")
+  (c-name "midgard_key_config_delete_group")
+  (return-type "gboolean")
+  (parameters
+    '("const-char*" "name")
+  )
+)
+
+(define-method store
+  (of-object "MidgardKeyConfig")
+  (c-name "midgard_key_config_store")
+  (return-type "gboolean")
+)
+
+(define-method load_from_data
+  (of-object "MidgardKeyConfig")
+  (c-name "midgard_key_config_load_from_data")
+  (return-type "gboolean")
+  (parameters
+    '("const-char*" "data")
+  )
+)
+
+(define-method to_data
+  (of-object "MidgardKeyConfig")
+  (c-name "midgard_key_config_to_data")
+  (return-type "char*")
+)
+
+
+
+;; From midgard_metadata.h
+
+(define-function midgard_metadata_get_type
+  (c-name "midgard_metadata_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_metadata_new
+  (c-name "midgard_metadata_new")
+  (is-constructor-of "MidgardMetadata")
+  (return-type "MidgardMetadata*")
+  (parameters
+    '("MidgardDBObject*" "object")
+  )
+)
+
+
+
+;; From midgard_object_attachment.h
+
+(define-method list_attachments
+  (of-object "MidgardObject")
+  (c-name "midgard_object_list_attachments")
+  (return-type "MidgardObject**")
+)
+
+(define-method create_attachment
+  (of-object "MidgardObject")
+  (c-name "midgard_object_create_attachment")
+  (return-type "MidgardObject*")
+  (parameters
+    '("const-gchar*" "name")
+    '("const-gchar*" "title")
+    '("const-gchar*" "mimetype")
+  )
+)
+
+(define-method delete_attachments
+  (of-object "MidgardObject")
+  (c-name "midgard_object_delete_attachments")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "n_params")
+    '("const-GParameter*" "parameters")
+  )
+)
+
+(define-method purge_attachments
+  (of-object "MidgardObject")
+  (c-name "midgard_object_purge_attachments")
+  (return-type "gboolean")
+  (parameters
+    '("gboolean" "delete_blob")
+    '("guint" "n_params")
+    '("const-GParameter*" "parameters")
+  )
+)
+
+(define-method find_attachments
+  (of-object "MidgardObject")
+  (c-name "midgard_object_find_attachments")
+  (return-type "MidgardObject**")
+  (parameters
+    '("guint" "n_params")
+    '("const-GParameter*" "parameters")
+  )
+)
+
+(define-method has_attachments
+  (of-object "MidgardObject")
+  (c-name "midgard_object_has_attachments")
+  (return-type "gboolean")
+)
+
+
+
+;; From midgard_object_class.h
+
+(define-method get_primary_property
+  (of-object "MidgardObjectClass")
+  (c-name "midgard_object_class_get_primary_property")
+  (return-type "const-gchar*")
+)
+
+(define-method get_property_parent
+  (of-object "MidgardObjectClass")
+  (c-name "midgard_object_class_get_property_parent")
+  (return-type "const-gchar*")
+)
+
+(define-method get_property_up
+  (of-object "MidgardObjectClass")
+  (c-name "midgard_object_class_get_property_up")
+  (return-type "const-gchar*")
+)
+
+(define-method get_property_unique
+  (of-object "MidgardObjectClass")
+  (c-name "midgard_object_class_get_property_unique")
+  (return-type "const-gchar*")
+)
+
+(define-method list_children
+  (of-object "MidgardObjectClass")
+  (c-name "midgard_object_class_list_children")
+  (return-type "MidgardObjectClass**")
+)
+
+(define-function midgard_object_class_factory
+  (c-name "midgard_object_class_factory")
+  (return-type "MgdObject*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("MidgardObjectClass*" "klass")
+    '("const-GValue*" "val")
+  )
+)
+
+(define-function midgard_object_class_get_object_by_guid
+  (c-name "midgard_object_class_get_object_by_guid")
+  (return-type "MgdObject*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "guid")
+  )
+)
+
+(define-function midgard_object_class_get_object_by_path
+  (c-name "midgard_object_class_get_object_by_path")
+  (return-type "MgdObject*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "classname")
+    '("const-gchar*" "object_path")
+  )
+)
+
+(define-function midgard_object_class_undelete
+  (c-name "midgard_object_class_undelete")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "guid")
+  )
+)
+
+(define-method has_metadata
+  (of-object "MidgardObjectClass")
+  (c-name "midgard_object_class_has_metadata")
+  (return-type "gboolean")
+)
+
+(define-method get_metadata_class
+  (of-object "MidgardObjectClass")
+  (c-name "midgard_object_class_get_metadata_class")
+  (return-type "GObjectClass*")
+)
+
+(define-method get_schema_value
+  (of-object "MidgardObjectClass")
+  (c-name "midgard_object_class_get_schema_value")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "name")
+  )
+)
+
+
+
+;; From midgard_object.h
+
+(define-function midgard_object_get_type
+  (c-name "midgard_object_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_object_new
+  (c-name "midgard_object_new")
+  (is-constructor-of "MidgardObject")
+  (return-type "MidgardObject*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "name")
+    '("GValue*" "value")
+  )
+)
+
+(define-method get_by_id
+  (of-object "MidgardObject")
+  (c-name "midgard_object_get_by_id")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "id")
+  )
+)
+
+(define-method get_by_guid
+  (of-object "MidgardObject")
+  (c-name "midgard_object_get_by_guid")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "guid")
+  )
+)
+
+(define-method get_by_path
+  (of-object "MidgardObject")
+  (c-name "midgard_object_get_by_path")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "path")
+  )
+)
+
+(define-method update
+  (of-object "MidgardObject")
+  (c-name "midgard_object_update")
+  (return-type "gboolean")
+)
+
+(define-method create
+  (of-object "MidgardObject")
+  (c-name "midgard_object_create")
+  (return-type "gboolean")
+)
+
+(define-method delete
+  (of-object "MidgardObject")
+  (c-name "midgard_object_delete")
+  (return-type "gboolean")
+  (parameters
+    '("gboolean" "check_dependents")
+  )
+)
+
+(define-method purge
+  (of-object "MidgardObject")
+  (c-name "midgard_object_purge")
+  (return-type "gboolean")
+  (parameters
+    '("gboolean" "check_dependents")
+  )
+)
+
+(define-method build_path
+  (of-object "MidgardObject")
+  (c-name "midgard_object_build_path")
+  (return-type "gchar*")
+)
+
+(define-method has_dependents
+  (of-object "MidgardObject")
+  (c-name "midgard_object_has_dependents")
+  (return-type "gboolean")
+)
+
+(define-method set_guid
+  (of-object "MidgardObject")
+  (c-name "midgard_object_set_guid")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "guid")
+  )
+)
+
+(define-method set_connection
+  (of-object "MidgardObject")
+  (c-name "midgard_object_set_connection")
+  (return-type "none")
+  (parameters
+    '("MidgardConnection*" "mgd")
+  )
+)
+
+(define-method get_connection
+  (of-object "MidgardObject")
+  (c-name "midgard_object_get_connection")
+  (return-type "const-MidgardConnection*")
+)
+
+(define-method approve
+  (of-object "MidgardObject")
+  (c-name "midgard_object_approve")
+  (return-type "gboolean")
+)
+
+(define-method is_approved
+  (of-object "MidgardObject")
+  (c-name "midgard_object_is_approved")
+  (return-type "gboolean")
+)
+
+(define-method unapprove
+  (of-object "MidgardObject")
+  (c-name "midgard_object_unapprove")
+  (return-type "gboolean")
+)
+
+(define-method lock
+  (of-object "MidgardObject")
+  (c-name "midgard_object_lock")
+  (return-type "gboolean")
+)
+
+(define-method is_locked
+  (of-object "MidgardObject")
+  (c-name "midgard_object_is_locked")
+  (return-type "gboolean")
+)
+
+(define-method unlock
+  (of-object "MidgardObject")
+  (c-name "midgard_object_unlock")
+  (return-type "gboolean")
+)
+
+(define-method get_schema_property
+  (of-object "MidgardObject")
+  (c-name "midgard_object_get_schema_property")
+  (return-type "GValue*")
+  (parameters
+    '("const-gchar*" "property")
+  )
+)
+
+(define-method set_schema_property
+  (of-object "MidgardObject")
+  (c-name "midgard_object_set_schema_property")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "property")
+    '("GValue*" "value")
+  )
+)
+
+
+
+;; From midgard_object_parameter.h
+
+(define-method get_parameter
+  (of-object "MidgardObject")
+  (c-name "midgard_object_get_parameter")
+  (return-type "const-GValue*")
+  (parameters
+    '("const-gchar*" "domain")
+    '("const-gchar*" "name")
+  )
+)
+
+(define-method set_parameter
+  (of-object "MidgardObject")
+  (c-name "midgard_object_set_parameter")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "domain")
+    '("const-gchar*" "name")
+    '("GValue*" "value")
+  )
+)
+
+(define-method list_parameters
+  (of-object "MidgardObject")
+  (c-name "midgard_object_list_parameters")
+  (return-type "MidgardObject**")
+  (parameters
+    '("const-gchar*" "domain")
+  )
+)
+
+(define-method delete_parameters
+  (of-object "MidgardObject")
+  (c-name "midgard_object_delete_parameters")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "n_params")
+    '("const-GParameter*" "parameters")
+  )
+)
+
+(define-method purge_parameters
+  (of-object "MidgardObject")
+  (c-name "midgard_object_purge_parameters")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "n_params")
+    '("const-GParameter*" "parameters")
+  )
+)
+
+(define-method find_parameters
+  (of-object "MidgardObject")
+  (c-name "midgard_object_find_parameters")
+  (return-type "MidgardObject**")
+  (parameters
+    '("guint" "n_params")
+    '("const-GParameter*" "parameters")
+  )
+)
+
+(define-method has_parameters
+  (of-object "MidgardObject")
+  (c-name "midgard_object_has_parameters")
+  (return-type "gboolean")
+)
+
+
+
+;; From midgard_query_constraint_group.h
+
+(define-function midgard_query_constraint_group_get_type
+  (c-name "midgard_query_constraint_group_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_query_constraint_group_new
+  (c-name "midgard_query_constraint_group_new")
+  (is-constructor-of "MidgardQueryConstraintGroup")
+  (return-type "MidgardQueryConstraintGroup*")
+  (parameters
+    '("const-gchar*" "type")
+    '("MidgardQueryConstraintSimple*" "constraint")
+  )
+  (varargs #t)
+)
+
+(define-method get_group_type
+  (of-object "MidgardQueryConstraintGroup")
+  (c-name "midgard_query_constraint_group_get_group_type")
+  (return-type "const-gchar*")
+)
+
+(define-method set_group_type
+  (of-object "MidgardQueryConstraintGroup")
+  (c-name "midgard_query_constraint_group_set_group_type")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "type")
+  )
+)
+
+(define-method add_constraint
+  (of-object "MidgardQueryConstraintGroup")
+  (c-name "midgard_query_constraint_group_add_constraint")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardQueryConstraintSimple*" "constraint")
+  )
+  (varargs #t)
+)
+
+
+
+;; From midgard_query_constraint.h
+
+(define-function midgard_query_constraint_get_type
+  (c-name "midgard_query_constraint_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_query_constraint_new
+  (c-name "midgard_query_constraint_new")
+  (is-constructor-of "MidgardQueryConstraint")
+  (return-type "MidgardQueryConstraint*")
+  (parameters
+    '("MidgardQueryProperty*" "property")
+    '("const-gchar*" "op")
+    '("MidgardQueryHolder*" "holder")
+    '("MidgardQueryStorage*" "storage")
+  )
+)
+
+(define-method get_value
+  (of-object "MidgardQueryConstraint")
+  (c-name "midgard_query_constraint_get_value")
+  (return-type "none")
+  (parameters
+    '("GValue*" "value")
+  )
+)
+
+(define-method set_value
+  (of-object "MidgardQueryConstraint")
+  (c-name "midgard_query_constraint_set_value")
+  (return-type "gboolean")
+  (parameters
+    '("const-GValue*" "value")
+  )
+)
+
+(define-method get_storage
+  (of-object "MidgardQueryConstraint")
+  (c-name "midgard_query_constraint_get_storage")
+  (return-type "MidgardQueryStorage*")
+)
+
+(define-method set_storage
+  (of-object "MidgardQueryConstraint")
+  (c-name "midgard_query_constraint_set_storage")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardQueryStorage*" "storage")
+  )
+)
+
+(define-method get_property
+  (of-object "MidgardQueryConstraint")
+  (c-name "midgard_query_constraint_get_property")
+  (return-type "MidgardQueryProperty*")
+)
+
+(define-method set_property
+  (of-object "MidgardQueryConstraint")
+  (c-name "midgard_query_constraint_set_property")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardQueryProperty*" "property")
+  )
+)
+
+(define-method get_operator
+  (of-object "MidgardQueryConstraint")
+  (c-name "midgard_query_constraint_get_operator")
+  (return-type "const-gchar*")
+)
+
+(define-method set_operator
+  (of-object "MidgardQueryConstraint")
+  (c-name "midgard_query_constraint_set_operator")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "op")
+  )
+)
+
+
+
+;; From midgard_query_constraint_simple.h
+
+(define-function midgard_query_constraint_simple_get_type
+  (c-name "midgard_query_constraint_simple_get_type")
+  (return-type "GType")
+)
+
+(define-method list_constraints
+  (of-object "MidgardQueryConstraintSimple")
+  (c-name "midgard_query_constraint_simple_list_constraints")
+  (return-type "MidgardQueryConstraintSimple**")
+  (parameters
+    '("guint*" "n_objects")
+  )
+)
+
+
+
+;; From midgard_query_executor.h
+
+(define-function midgard_query_executor_get_type
+  (c-name "midgard_query_executor_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_query_executor_new
+  (c-name "midgard_query_executor_new")
+  (is-constructor-of "MidgardQueryExecutor")
+  (return-type "MidgardQueryExecutor*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("MidgardQueryStorage*" "storage")
+  )
+)
+
+(define-method set_constraint
+  (of-object "MidgardQueryExecutor")
+  (c-name "midgard_query_executor_set_constraint")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardQueryConstraintSimple*" "constraint")
+  )
+)
+
+(define-method set_limit
+  (of-object "MidgardQueryExecutor")
+  (c-name "midgard_query_executor_set_limit")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "limit")
+  )
+)
+
+(define-method set_offset
+  (of-object "MidgardQueryExecutor")
+  (c-name "midgard_query_executor_set_offset")
+  (return-type "gboolean")
+  (parameters
+    '("guint" "offset")
+  )
+)
+
+(define-method add_order
+  (of-object "MidgardQueryExecutor")
+  (c-name "midgard_query_executor_add_order")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardQueryProperty*" "property")
+    '("const-gchar*" "type")
+  )
+)
+
+(define-method add_join
+  (of-object "MidgardQueryExecutor")
+  (c-name "midgard_query_executor_add_join")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "join_type")
+    '("MidgardQueryProperty*" "left_property")
+    '("MidgardQueryProperty*" "right_property")
+  )
+)
+
+(define-method execute
+  (of-object "MidgardQueryExecutor")
+  (c-name "midgard_query_executor_execute")
+  (return-type "gboolean")
+)
+
+(define-method get_results_count
+  (of-object "MidgardQueryExecutor")
+  (c-name "midgard_query_executor_get_results_count")
+  (return-type "guint")
+)
+
+
+
+;; From midgard_query_holder.h
+
+(define-function midgard_query_holder_get_type
+  (c-name "midgard_query_holder_get_type")
+  (return-type "GType")
+)
+
+(define-method get_value
+  (of-object "MidgardQueryHolder")
+  (c-name "midgard_query_holder_get_value")
+  (return-type "none")
+  (parameters
+    '("GValue*" "value")
+  )
+)
+
+(define-method set_value
+  (of-object "MidgardQueryHolder")
+  (c-name "midgard_query_holder_set_value")
+  (return-type "gboolean")
+  (parameters
+    '("const-GValue*" "value")
+  )
+)
+
+
+
+;; From midgard_query_property.h
+
+(define-function midgard_query_property_get_type
+  (c-name "midgard_query_property_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_query_property_new
+  (c-name "midgard_query_property_new")
+  (is-constructor-of "MidgardQueryProperty")
+  (return-type "MidgardQueryProperty*")
+  (parameters
+    '("const-gchar*" "property")
+    '("MidgardQueryStorage*" "storage")
+  )
+)
+
+
+
+;; From midgard_query_select.h
+
+(define-function midgard_query_select_get_type
+  (c-name "midgard_query_select_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_query_select_new
+  (c-name "midgard_query_select_new")
+  (is-constructor-of "MidgardQuerySelect")
+  (return-type "MidgardQuerySelect*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("MidgardQueryStorage*" "storage")
+  )
+)
+
+(define-method list_objects
+  (of-object "MidgardQuerySelect")
+  (c-name "midgard_query_select_list_objects")
+  (return-type "MidgardDBObject**")
+  (parameters
+    '("guint*" "n_objects")
+  )
+)
+
+(define-method toggle_read_only
+  (of-object "MidgardQuerySelect")
+  (c-name "midgard_query_select_toggle_read_only")
+  (return-type "none")
+  (parameters
+    '("gboolean" "toggle")
+  )
+)
+
+
+
+;; From midgard_query_storage.h
+
+(define-function midgard_query_storage_get_type
+  (c-name "midgard_query_storage_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_query_storage_new
+  (c-name "midgard_query_storage_new")
+  (is-constructor-of "MidgardQueryStorage")
+  (return-type "MidgardQueryStorage*")
+  (parameters
+    '("const-gchar*" "classname")
+  )
+)
+
+
+
+;; From midgard_query_value.h
+
+(define-function midgard_query_value_get_type
+  (c-name "midgard_query_value_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_query_value_new
+  (c-name "midgard_query_value_new")
+  (is-constructor-of "MidgardQueryValue")
+  (return-type "MidgardQueryValue*")
+  (parameters
+    '("const-GValue*" "value")
+  )
+)
+
+
+
+;; From midgard_quota.h
+
+(define-function midgard_quota_get_object_size
+  (c-name "midgard_quota_get_object_size")
+  (return-type "guint")
+  (parameters
+    '("MidgardObject*" "object")
+  )
+)
+
+(define-function midgard_quota_create
+  (c-name "midgard_quota_create")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardObject*" "object")
+  )
+)
+
+(define-function midgard_quota_update
+  (c-name "midgard_quota_update")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardObject*" "object")
+    '("guint" "init_size")
+  )
+)
+
+(define-function midgard_quota_remove
+  (c-name "midgard_quota_remove")
+  (return-type "none")
+  (parameters
+    '("MidgardObject*" "object")
+    '("guint" "size")
+  )
+)
+
+(define-function midgard_quota_set_type_size
+  (c-name "midgard_quota_set_type_size")
+  (return-type "none")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "typename")
+    '("guint" "size")
+    '("guint" "records")
+  )
+)
+
+(define-function midgard_quota_get_type_size
+  (c-name "midgard_quota_get_type_size")
+  (return-type "guint")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "typename")
+  )
+)
+
+(define-function midgard_quota_size_is_reached
+  (c-name "midgard_quota_size_is_reached")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardObject*" "object")
+    '("gint" "size")
+  )
+)
+
+
+
+;; From midgard_reflection_property.h
+
+(define-function midgard_reflection_property_get_type
+  (c-name "midgard_reflection_property_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_reflection_property_new
+  (c-name "midgard_reflection_property_new")
+  (is-constructor-of "MidgardReflectionProperty")
+  (return-type "MidgardReflectionProperty*")
+  (parameters
+    '("MidgardDBObjectClass*" "klass")
+  )
+)
+
+(define-method get_midgard_type
+  (of-object "MidgardReflectionProperty")
+  (c-name "midgard_reflection_property_get_midgard_type")
+  (return-type "GType")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method is_link
+  (of-object "MidgardReflectionProperty")
+  (c-name "midgard_reflection_property_is_link")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method is_linked
+  (of-object "MidgardReflectionProperty")
+  (c-name "midgard_reflection_property_is_linked")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method get_link_class
+  (of-object "MidgardReflectionProperty")
+  (c-name "midgard_reflection_property_get_link_class")
+  (return-type "const-MidgardDBObjectClass*")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method get_link_name
+  (of-object "MidgardReflectionProperty")
+  (c-name "midgard_reflection_property_get_link_name")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method get_link_target
+  (of-object "MidgardReflectionProperty")
+  (c-name "midgard_reflection_property_get_link_target")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method description
+  (of-object "MidgardReflectionProperty")
+  (c-name "midgard_reflection_property_description")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method get_user_value
+  (of-object "MidgardReflectionProperty")
+  (c-name "midgard_reflection_property_get_user_value")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "property")
+    '("const-gchar*" "name")
+  )
+)
+
+(define-method is_private
+  (of-object "MidgardReflectionProperty")
+  (c-name "midgard_reflection_property_is_private")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "property")
+  )
+)
+
+
+
+;; From midgard_reflector_object.h
+
+(define-function midgard_reflector_object_get_type
+  (c-name "midgard_reflector_object_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_reflector_object_get_property_primary
+  (c-name "midgard_reflector_object_get_property_primary")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "classname")
+  )
+)
+
+(define-function midgard_reflector_object_get_property_up
+  (c-name "midgard_reflector_object_get_property_up")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "classname")
+  )
+)
+
+(define-function midgard_reflector_object_get_property_parent
+  (c-name "midgard_reflector_object_get_property_parent")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "classname")
+  )
+)
+
+(define-function midgard_reflector_object_get_property_unique
+  (c-name "midgard_reflector_object_get_property_unique")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "classname")
+  )
+)
+
+(define-function midgard_reflector_object_list_children
+  (c-name "midgard_reflector_object_list_children")
+  (return-type "gchar**")
+  (parameters
+    '("const-gchar*" "classname")
+    '("guint*" "n_children")
+  )
+)
+
+(define-function midgard_reflector_object_has_metadata_class
+  (c-name "midgard_reflector_object_has_metadata_class")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "classname")
+  )
+)
+
+(define-function midgard_reflector_object_get_metadata_class
+  (c-name "midgard_reflector_object_get_metadata_class")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "classname")
+  )
+)
+
+(define-function midgard_reflector_object_get_schema_value
+  (c-name "midgard_reflector_object_get_schema_value")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "classname")
+    '("const-gchar*" "name")
+  )
+)
+
+
+
+;; From midgard_reflector_property.h
+
+(define-function midgard_reflector_property_get_type
+  (c-name "midgard_reflector_property_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_reflector_property_new
+  (c-name "midgard_reflector_property_new")
+  (is-constructor-of "MidgardReflectorProperty")
+  (return-type "MidgardReflectorProperty*")
+  (parameters
+    '("const-gchar*" "classname")
+  )
+)
+
+(define-method get_midgard_type
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_get_midgard_type")
+  (return-type "GType")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method is_link
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_is_link")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method is_linked
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_is_linked")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method get_link_class
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_get_link_class")
+  (return-type "const-MidgardDBObjectClass*")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method get_link_name
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_get_link_name")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method get_link_target
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_get_link_target")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method description
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_description")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "propname")
+  )
+)
+
+(define-method get_user_value
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_get_user_value")
+  (return-type "const-gchar*")
+  (parameters
+    '("const-gchar*" "property")
+    '("const-gchar*" "name")
+  )
+)
+
+(define-method is_private
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_is_private")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "property")
+  )
+)
+
+(define-method is_unique
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_is_unique")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "property")
+  )
+)
+
+(define-method is_primary
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_is_primary")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "property")
+  )
+)
+
+(define-method has_default_value
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_has_default_value")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "property")
+  )
+)
+
+(define-method get_default_value
+  (of-object "MidgardReflectorProperty")
+  (c-name "midgard_reflector_property_get_default_value")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "property")
+    '("GValue*" "value")
+  )
+)
+
+
+
+;; From midgard_replicator.h
+
+(define-function midgard_replicator_get_type
+  (c-name "midgard_replicator_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_replicator_serialize
+  (c-name "midgard_replicator_serialize")
+  (return-type "gchar*")
+  (parameters
+    '("GObject*" "object")
+  )
+)
+
+(define-function midgard_replicator_export
+  (c-name "midgard_replicator_export")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardDBObject*" "object")
+  )
+)
+
+(define-function midgard_replicator_export_purged
+  (c-name "midgard_replicator_export_purged")
+  (return-type "gchar*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "classname")
+    '("const-gchar*" "startdate")
+    '("const-gchar*" "enddate")
+  )
+)
+
+(define-function midgard_replicator_serialize_blob
+  (c-name "midgard_replicator_serialize_blob")
+  (return-type "gchar*")
+  (parameters
+    '("MidgardObject*" "object")
+  )
+)
+
+(define-function midgard_replicator_export_blob
+  (c-name "midgard_replicator_export_blob")
+  (return-type "gchar*")
+  (parameters
+    '("MidgardObject*" "object")
+  )
+)
+
+(define-function midgard_replicator_export_by_guid
+  (c-name "midgard_replicator_export_by_guid")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "guid")
+  )
+)
+
+(define-function midgard_replicator_export_media
+  (c-name "midgard_replicator_export_media")
+  (return-type "gchar*")
+  (parameters
+    '("MidgardObject*" "object")
+  )
+)
+
+(define-function midgard_replicator_unserialize
+  (c-name "midgard_replicator_unserialize")
+  (return-type "GObject**")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "xml")
+    '("gboolean" "force")
+  )
+)
+
+(define-function midgard_replicator_import_object
+  (c-name "midgard_replicator_import_object")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardDBObject*" "object")
+    '("gboolean" "force")
+  )
+)
+
+(define-function midgard_replicator_import_from_xml
+  (c-name "midgard_replicator_import_from_xml")
+  (return-type "none")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "xml")
+    '("gboolean" "force")
+  )
+)
+
+
+
+;; From midgard_schema.h
+
+(define-function midgard_schema_get_type
+  (c-name "midgard_schema_get_type")
+  (return-type "GType")
+)
+
+(define-method init
+  (of-object "MidgardSchema")
+  (c-name "midgard_schema_init")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "path")
+  )
+)
+
+(define-method read_dir
+  (of-object "MidgardSchema")
+  (c-name "midgard_schema_read_dir")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "dirname")
+  )
+)
+
+(define-method type_exists
+  (of-object "MidgardSchema")
+  (c-name "midgard_schema_type_exists")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "classname")
+  )
+)
+
+(define-method read_file
+  (of-object "MidgardSchema")
+  (c-name "midgard_schema_read_file")
+  (return-type "none")
+  (parameters
+    '("const-gchar*" "filename")
+  )
+)
+
+
+
+;; From midgard_schema_object_factory.h
+
+(define-function midgard_schema_object_factory_get_type
+  (c-name "midgard_schema_object_factory_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_schema_object_factory_get_object_by_guid
+  (c-name "midgard_schema_object_factory_get_object_by_guid")
+  (return-type "MidgardObject*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "guid")
+  )
+)
+
+(define-function midgard_schema_object_factory_get_object_by_path
+  (c-name "midgard_schema_object_factory_get_object_by_path")
+  (return-type "MidgardObject*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "classname")
+    '("const-gchar*" "path")
+  )
+)
+
+(define-function midgard_schema_object_factory_object_undelete
+  (c-name "midgard_schema_object_factory_object_undelete")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "guid")
+  )
+)
+
+
+
+;; From midgard_schema_object_tree.h
+
+(define-function midgard_schema_object_tree_get_type
+  (c-name "midgard_schema_object_tree_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_schema_object_tree_is_in_tree
+  (c-name "midgard_schema_object_tree_is_in_tree")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardObject*" "object")
+    '("MidgardObject*" "parent_object")
+  )
+)
+
+(define-function midgard_schema_object_tree_get_parent_name
+  (c-name "midgard_schema_object_tree_get_parent_name")
+  (return-type "const-gchar*")
+  (parameters
+    '("MidgardObject*" "object")
+  )
+)
+
+(define-function midgard_schema_object_tree_get_parent_object
+  (c-name "midgard_schema_object_tree_get_parent_object")
+  (return-type "MidgardObject*")
+  (parameters
+    '("MidgardObject*" "object")
+  )
+)
+
+(define-function midgard_schema_object_tree_list_objects
+  (c-name "midgard_schema_object_tree_list_objects")
+  (return-type "MidgardObject**")
+  (parameters
+    '("MidgardObject*" "object")
+    '("guint*" "n_objects")
+  )
+)
+
+(define-function midgard_schema_object_tree_list_children_objects
+  (c-name "midgard_schema_object_tree_list_children_objects")
+  (return-type "MidgardObject**")
+  (parameters
+    '("MidgardObject*" "object")
+    '("const-gchar*" "classname")
+    '("guint*" "n_objects")
+  )
+)
+
+
+
+;; From midgard_storage.h
+
+(define-function midgard_storage_get_type
+  (c-name "midgard_storage_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_storage_create_base_storage
+  (c-name "midgard_storage_create_base_storage")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardConnection*" "mgd")
+  )
+)
+
+(define-function midgard_storage_create
+  (c-name "midgard_storage_create")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "name")
+  )
+)
+
+(define-function midgard_storage_update
+  (c-name "midgard_storage_update")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "name")
+  )
+)
+
+(define-function midgard_storage_exists
+  (c-name "midgard_storage_exists")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "name")
+  )
+)
+
+(define-function midgard_storage_delete
+  (c-name "midgard_storage_delete")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "name")
+  )
+)
+
+
+
+;; From midgard_timestamp.h
+
+(define-function midgard_timestamp_get_type
+  (c-name "midgard_timestamp_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_timestamp_set_current_time
+  (c-name "midgard_timestamp_set_current_time")
+  (return-type "none")
+  (parameters
+    '("const-GValue*" "value")
+  )
+)
+
+(define-function midgard_timestamp_get_string_from_value
+  (c-name "midgard_timestamp_get_string_from_value")
+  (return-type "gchar*")
+  (parameters
+    '("const-GValue*" "value")
+  )
+)
+
+(define-method get_string
+  (of-object "MidgardTimestamp")
+  (c-name "midgard_timestamp_get_string")
+  (return-type "gchar*")
+)
+
+(define-function midgard_timestamp_new
+  (c-name "midgard_timestamp_new")
+  (is-constructor-of "MidgardTimestamp")
+  (return-type "MidgardTimestamp*")
+)
+
+(define-function midgard_timestamp_new_current
+  (c-name "midgard_timestamp_new_current")
+  (return-type "none")
+  (parameters
+    '("GValue*" "value")
+  )
+)
+
+(define-function midgard_timestamp_new_value_from_iso8601
+  (c-name "midgard_timestamp_new_value_from_iso8601")
+  (return-type "GValue*")
+  (parameters
+    '("const-gchar*" "iso_date")
+  )
+)
+
+(define-function midgard_timestamp_new_from_iso8601
+  (c-name "midgard_timestamp_new_from_iso8601")
+  (return-type "MidgardTimestamp*")
+  (parameters
+    '("const-gchar*" "iso_date")
+  )
+)
+
+(define-method free
+  (of-object "MidgardTimestamp")
+  (c-name "midgard_timestamp_free")
+  (return-type "none")
+)
+
+(define-function midgard_core_timestamp_set_current_time
+  (c-name "midgard_core_timestamp_set_current_time")
+  (return-type "none")
+  (parameters
+    '("MidgardTimestamp*" "tm")
+  )
+)
+
+
+
+;; From midgard_transaction.h
+
+(define-function midgard_transaction_get_type
+  (c-name "midgard_transaction_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_transaction_new
+  (c-name "midgard_transaction_new")
+  (is-constructor-of "MidgardTransaction")
+  (return-type "MidgardTransaction*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+  )
+)
+
+(define-method begin
+  (of-object "MidgardTransaction")
+  (c-name "midgard_transaction_begin")
+  (return-type "gboolean")
+)
+
+(define-method commit
+  (of-object "MidgardTransaction")
+  (c-name "midgard_transaction_commit")
+  (return-type "gboolean")
+)
+
+(define-method rollback
+  (of-object "MidgardTransaction")
+  (c-name "midgard_transaction_rollback")
+  (return-type "gboolean")
+)
+
+(define-method get_status
+  (of-object "MidgardTransaction")
+  (c-name "midgard_transaction_get_status")
+  (return-type "gboolean")
+)
+
+(define-method get_name
+  (of-object "MidgardTransaction")
+  (c-name "midgard_transaction_get_name")
+  (return-type "const-gchar*")
+)
+
+
+
+;; From midgard_tree.h
+
+
+
+;; From midgard_type.h
+
+(define-function midgard_longtext_get_type
+  (c-name "midgard_longtext_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_param_longtext_get_type
+  (c-name "midgard_param_longtext_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_guid_get_type
+  (c-name "midgard_guid_get_type")
+  (return-type "GType")
+)
+
+
+
+;; From midgard_user.h
+
+(define-function midgard_user_get_type
+  (c-name "midgard_user_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_user_new
+  (c-name "midgard_user_new")
+  (is-constructor-of "MidgardUser")
+  (return-type "MidgardUser*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("guint" "n_params")
+    '("const-GParameter*" "parameters")
+  )
+)
+
+(define-function midgard_user_get
+  (c-name "midgard_user_get")
+  (return-type "MidgardUser*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("guint" "n_params")
+    '("const-GParameter*" "parameters")
+  )
+)
+
+(define-function midgard_user_quick_login
+  (c-name "midgard_user_quick_login")
+  (return-type "MidgardUser*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "login")
+    '("const-gchar*" "password")
+  )
+)
+
+(define-function midgard_user_query
+  (c-name "midgard_user_query")
+  (return-type "MidgardUser**")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("guint" "n_params")
+    '("const-GParameter*" "parameters")
+  )
+)
+
+(define-method create
+  (of-object "MidgardUser")
+  (c-name "midgard_user_create")
+  (return-type "gboolean")
+)
+
+(define-method update
+  (of-object "MidgardUser")
+  (c-name "midgard_user_update")
+  (return-type "gboolean")
+)
+
+(define-method delete
+  (of-object "MidgardUser")
+  (c-name "midgard_user_delete")
+  (return-type "gboolean")
+)
+
+(define-method is_user
+  (of-object "MidgardUser")
+  (c-name "midgard_user_is_user")
+  (return-type "gboolean")
+)
+
+(define-method is_admin
+  (of-object "MidgardUser")
+  (c-name "midgard_user_is_admin")
+  (return-type "gboolean")
+)
+
+(define-method get_person
+  (of-object "MidgardUser")
+  (c-name "midgard_user_get_person")
+  (return-type "MidgardObject*")
+)
+
+(define-method set_person
+  (of-object "MidgardUser")
+  (c-name "midgard_user_set_person")
+  (return-type "gboolean")
+  (parameters
+    '("MidgardObject*" "person")
+  )
+)
+
+(define-method log_in
+  (of-object "MidgardUser")
+  (c-name "midgard_user_log_in")
+  (return-type "gboolean")
+)
+
+(define-method log_out
+  (of-object "MidgardUser")
+  (c-name "midgard_user_log_out")
+  (return-type "gboolean")
+)
+
+(define-method set_active
+  (of-object "MidgardUser")
+  (c-name "midgard_user_set_active")
+  (return-type "gboolean")
+  (parameters
+    '("gboolean" "flag")
+  )
+)
+
+
+
+;; From midgard_utils.h
+
+(define-function midgard_version
+  (c-name "midgard_version")
+  (return-type "const-char*")
+)
+
+(define-function midgard_init
+  (c-name "midgard_init")
+  (return-type "none")
+)
+
+(define-function midgard_close
+  (c-name "midgard_close")
+  (return-type "none")
+)
+
+
+
+;; From midgard_view.h
+
+(define-function midgard_view_get_type
+  (c-name "midgard_view_get_type")
+  (return-type "GType")
+)
+
+
+
+;; From query_builder.h
+
+(define-function midgard_query_builder_get_type
+  (c-name "midgard_query_builder_get_type")
+  (return-type "GType")
+)
+
+(define-function midgard_query_builder_new
+  (c-name "midgard_query_builder_new")
+  (is-constructor-of "MidgardQueryBuilder")
+  (return-type "MidgardQueryBuilder*")
+  (parameters
+    '("MidgardConnection*" "mgd")
+    '("const-gchar*" "classname")
+  )
+)
+
+(define-method add_constraint
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_add_constraint")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "name")
+    '("const-gchar*" "op")
+    '("const-GValue*" "value")
+  )
+)
+
+(define-method add_constraint_with_property
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_add_constraint_with_property")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "property_a")
+    '("const-gchar*" "op")
+    '("const-gchar*" "property_b")
+  )
+)
+
+(define-method begin_group
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_begin_group")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "type")
+  )
+)
+
+(define-method end_group
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_end_group")
+  (return-type "gboolean")
+)
+
+(define-method add_order
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_add_order")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "name")
+    '("const-gchar*" "dir")
+  )
+)
+
+(define-method set_offset
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_set_offset")
+  (return-type "none")
+  (parameters
+    '("guint" "offset")
+  )
+)
+
+(define-method set_limit
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_set_limit")
+  (return-type "none")
+  (parameters
+    '("guint" "limit")
+  )
+)
+
+(define-method execute
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_execute")
+  (return-type "GObject**")
+  (parameters
+    '("guint*" "n_objects")
+  )
+)
+
+(define-method count
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_count")
+  (return-type "guint")
+)
+
+(define-method get_type_name
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_get_type_name")
+  (return-type "const-gchar*")
+)
+
+(define-method include_deleted
+  (of-object "MidgardQueryBuilder")
+  (c-name "midgard_query_builder_include_deleted")
+  (return-type "none")
+)
+
+
+
+;; From uuid.h
+
+(define-function midgard_is_uuid
+  (c-name "midgard_is_uuid")
+  (return-type "gboolean")
+  (parameters
+    '("const-gchar*" "uuid")
+  )
+)
+
+(define-function midgard_uuid_new
+  (c-name "midgard_uuid_new")
+  (is-constructor-of "MidgardUuid")
+  (return-type "gchar*")
+)
+
+(define-function midgard_uuid_external
+  (c-name "midgard_uuid_external")
+  (return-type "gchar*")
+  (parameters
+    '("const-gchar*" "external")
+  )
+)
+
+

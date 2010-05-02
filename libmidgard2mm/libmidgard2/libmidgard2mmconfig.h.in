@@ -1,0 +1,10 @@
+/* This file is part of libmidgard2mm. */
+
+/* Major version number of libmidgard2mm. */
+#undef LIBMIDGARD2MM_MAJOR_VERSION
+
+/* Micro version number of libmidgard2mm. */
+#undef LIBMIDGARD2MM_MICRO_VERSION
+
+/* Minor version number of libmidgard2mm. */
+#undef LIBMIDGARD2MM_MINOR_VERSION
